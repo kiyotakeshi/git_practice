@@ -19,9 +19,9 @@ index c87f8fa..d88ebf2 100644
 +<p>pull request</p>
 \ No newline at end of file
 
-kiyotatakeshi@localhost:(pull_request*) $ git add git_tutorial/index.html
+$ git add git_tutorial/index.html
 
-kiyotatakeshi@localhost:(pull_request+) $ git commit -m "add pull request"
+$ git commit -m "add pull request"
 [pull_request 25fe824] add pull request
  1 file changed, 1 insertion(+)
 
@@ -86,12 +86,13 @@ git branch -d pull_request
 -
 
 ```
-kiyotatakeshi@localhost:(master) $ git status                                                                                                      [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git status
 On branch master
 Your branch is up to date with 'origin/master'.
 
 nothing to commit, working tree clean
-kiyotatakeshi@localhost:(master) $ git branch                                                                                                      [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+
+$ git branch
   feature
 * master
   pull_request
@@ -102,8 +103,8 @@ kiyotatakeshi@localhost:(master) $ git branch                                   
 
 ```
 
-kiyotatakeshi@localhost:(master) $ git add .                                                                                                       [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
-kiyotatakeshi@localhost:(master+) $ git commit                                                                                                     [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git add .
+$ git commit
 [master 5d4c4a9] rebase_practice を新規作成
  1 file changed, 1 insertion(+)
  create mode 100644 git_tutorial/rebase_practice.html
@@ -113,10 +114,10 @@ kiyotatakeshi@localhost:(master+) $ git commit                                  
 - featureでファイルを新規作成
 
 ```
-$ git checkout feature                                                                                            [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git checkout feature
 Switched to branch 'feature'
-kiyotatakeshi@localhost:(feature) $ git add .                                                                                                      [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
-kiyotatakeshi@localhost:(feature+) $ git commit                                                                                                    [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git add .
+$ git commit
 [feature aef4f14] rebase_practice_feature.html を追加
  1 file changed, 1 insertion(+)
  create mode 100644 git_tutorial/rebase_practice_feature.html
@@ -126,12 +127,12 @@ kiyotatakeshi@localhost:(feature+) $ git commit                                 
 - featureブランチにmasterブランチの内容をrebaseで取り込む
 
 ```
-kiyotatakeshi@localhost:(feature) $ git rebase master                                                                                              [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git rebase master
 First, rewinding head to replay your work on top of it...
 Applying: rebase_practice_feature.html を追加
 
 # master ブランチでの変更内容も取り込まれている
-kiyotatakeshi@localhost:(feature) $ git log --oneline                                                                                              [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git log --oneline
 c1b0a03 (HEAD -> feature) rebase_practice_feature.html を追加
 5d4c4a9 (master) rebase_practice を新規作成
 
@@ -141,12 +142,12 @@ c1b0a03 (HEAD -> feature) rebase_practice_feature.html を追加
     - 同じ内容で向き先を変えただけなので、新しいマージコミットは生まれない
 
 ```
-kiyotatakeshi@localhost:(feature) $ git checkout master                                                                                            [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git checkout master
 Switched to branch 'master'
 Your branch is ahead of 'origin/master' by 1 commit.
   (use "git push" to publish your local commits)
 
-kiyotatakeshi@localhost:(master) $ git merge feature                                                                                               [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git merge feature
 Updating 5d4c4a9..c1b0a03
 Fast-forward
  git_tutorial/rebase_practice_feature.html | 1 +
@@ -158,7 +159,7 @@ Fast-forward
 - 変更内容をpushしてブランチを削除
 
 ```
-kiyotatakeshi@localhost:(master) $ git push origin master                                                                                          [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git push origin master
 Enumerating objects: 10, done.
 Counting objects: 100% (10/10), done.
 Delta compression using up to 4 threads
@@ -169,10 +170,10 @@ remote: Resolving deltas: 100% (3/3), completed with 1 local object.
 To https://github.com/kiyotakeshi/git_practice.git
    40f68e9..c1b0a03  master -> master
 
-kiyotatakeshi@localhost:(master) $ git branch -d feature                                                                                           [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git branch -d feature
 Deleted branch feature (was c1b0a03).
 
-kiyotatakeshi@localhost:(master) $ git branch                                                                                                      [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git branch
 * master
   pull_request
 
@@ -209,10 +210,10 @@ $ git config branch.master.rebase true
 ```
 
 ```
-kiyotatakeshi@localhost:(master) $ git config --global pull.rebase true
+$ git config --global pull.rebase true
 
 
-kiyotatakeshi@localhost:(master) $ cat ~/.gitconfig                                                                                                [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ cat ~/.gitconfig
 [user]
 	email = kiyotatakeshi0609@gmail.com
 	name = kiyotakeshi
@@ -227,41 +228,41 @@ kiyotatakeshi@localhost:(master) $ cat ~/.gitconfig                             
 - 3回分コミットする
 
 ```
-kiyotatakeshi@localhost:(master) $ git status                                                                                                      [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git status
 On branch master
 Your branch is up to date with 'origin/master'.
 
 nothing to commit, working tree clean
 
-kiyotatakeshi@localhost:(master) $ touch git_tutorial/first.html                                                                                   [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ touch git_tutorial/first.html
 
-kiyotatakeshi@localhost:(master) $ git add .                                                                                                       [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git add .
 
-kiyotatakeshi@localhost:(master+) $ git commit -m "add first.html"                                                                                 [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git commit -m "add first.html"
 [master 868138f] add first.html
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 git_tutorial/first.html
 
-kiyotatakeshi@localhost:(master) $ touch git_tutorial/second.html                                                                                  [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ touch git_tutorial/second.html
 
-kiyotatakeshi@localhost:(master) $ git add .                                                                                                       [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git add .
 
-kiyotatakeshi@localhost:(master+) $ git commit -m "add second.html"                                                                                [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git commit -m "add second.html"
 [master 4a9909f] add second.html
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 git_tutorial/second.html
 
-kiyotatakeshi@localhost:(master) $ touch git_tutorial/third.html                                                                                   [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ touch git_tutorial/third.html
 
-kiyotatakeshi@localhost:(master) $ git add .                                                                                                       [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git add .
 
-kiyotatakeshi@localhost:(master+) $ git commit -m "add third.html"                                                                                 [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git commit -m "add third.html"
 [master ee9dea2] add third.html
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 git_tutorial/third.html
 
 # 確認
-kiyotatakeshi@localhost:(master) $ git log --oneline -n 3                                                                                          [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git log --oneline -n 3
 ee9dea2 (HEAD -> master) add third.html
 4a9909f add second.html
 868138f add first.html
@@ -275,7 +276,7 @@ ee9dea2 (HEAD -> master) add third.html
 # HEAD~1 は一番目の親を指定(HEADを起点とした数値分の親コミットを指定)
 # HEAD~3 とすると、HEAD~3を起点としてそれ以降のコミットをrebaseする
 
-kiyotatakeshi@localhost:(master) $ git rebase -i HEAD~3                                                                                            [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git rebase -i HEAD~3
 
 # エディタで修正したいコミットを edit に変更する
   1 pick 868138f add first.html
@@ -299,14 +300,14 @@ Once you are satisfied with your changes, run
     - ファイルを追加等する場合は、修正後してステージングに追加してコミット
 
 ```
-kiyotatakeshi@localhost:(master(rebase-i)) $ git commit --amend                                                                                    [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git commit --amend
 [detached HEAD a815246] third.html を追加
  Date: Sun Nov 10 19:49:46 2019 +0900
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 git_tutorial/third.html
 
 # 次の修正に移る(今回は pick にしているためこれで終わり)
-kiyotatakeshi@localhost:(master(rebase-i)) $ git rebase --continue                                                                                 [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git rebase --continue
 Successfully rebased and updated refs/heads/master.
 
 ```
@@ -315,7 +316,7 @@ Successfully rebased and updated refs/heads/master.
     - コミットメッセージを変更できている
 
 ```
-kiyotatakeshi@localhost:(master) $ git log --oneline -n 3                                                                                          [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git log --oneline -n 3
 a815246 (HEAD -> master) third.html を追加
 4a9909f add second.html
 868138f add first.html
@@ -328,13 +329,13 @@ a815246 (HEAD -> master) third.html を追加
 ```
 # 順番を確認
 
-kiyotatakeshi@localhost:(master) $ git log --oneline -n 3                                                                                          [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git log --oneline -n 3
 a815246 (HEAD -> master) third.html を追加
 4a9909f add second.html
 868138f add first.html
 
 # 並び替える
-kiyotatakeshi@localhost:(master) $ git rebase -i HEAD~3                                                                                            [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git rebase -i HEAD~3
 
 # rebaseを適用するコミット順に並んでいるため git log とは表示が逆
 
@@ -345,7 +346,7 @@ kiyotatakeshi@localhost:(master) $ git rebase -i HEAD~3                         
 Successfully rebased and updated refs/heads/master.
 
 # 確認
-kiyotatakeshi@localhost:(master) $ git log --oneline -n 3                                                                                          [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git log --oneline -n 3
 d9f3540 (HEAD -> master) third.html を追加
 724dfb3 add first.html
 190cbc0 add second.html
@@ -355,7 +356,7 @@ d9f3540 (HEAD -> master) third.html を追加
 - 複数のコミットを束ねる
 
 ```
-kiyotatakeshi@localhost:(master) $ git rebase -i HEAD~3                                                                                            [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git rebase -i HEAD~3
 
 # 直前のコミットと一つにまとめるものを squash にする
 # 以下のようにすると add second.thml にまとめられる
@@ -378,7 +379,7 @@ Successfully rebased and updated refs/heads/master.
 - 確認
 
 ```
-kiyotatakeshi@localhost:(master) $ git log --oneline -n 3                                                                                          [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git log --oneline -n 3
 
 faefc39 (HEAD -> master) add second.html
 c1b0a03 (origin/master) rebase_practice_feature.html を追加
@@ -399,14 +400,14 @@ Date:   Sun Nov 10 19:49:26 2019 +0900
 
 ```
 # 確認
-kiyotatakeshi@localhost:(master) $ git log --oneline -n 3                                                                                          [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git log --oneline -n 3
 faefc39 (HEAD -> master) add second.html
 c1b0a03 (origin/master) rebase_practice_feature.html を追加
 5d4c4a9 rebase_practice を新規作成
 
 # 直前のコミット(分割したいコミット)を修正する
 # pick を edit に変更
-kiyotatakeshi@localhost:(master) $ git rebase -i HEAD~                                                                                             [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git rebase -i HEAD~
 
 Stopped at faefc39...  add second.html
 You can amend the commit now, with
@@ -442,16 +443,16 @@ Untracked files:
 - 分割してコミット
 
 ```
-$  git add git_tutorial/first.html git_tutorial/second.html                                             [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$  git add git_tutorial/first.html git_tutorial/second.html
 
-kiyotatakeshi@localhost:(master(rebase-i)+) $ git commit -m "add first.html,second.html"                                                           [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git commit -m "add first.html,second.html"
 
-kiyotatakeshi@localhost:(master(rebase-i)) $ git add git_tutorial/third.html                                                                       [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git add git_tutorial/third.html
 
-kiyotatakeshi@localhost:(master(rebase-i)+) $ git commit -m "add third.html"                                                                       [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git commit -m "add third.html"
 
 # 次の rebase に進む(完了)
-kiyotatakeshi@localhost:(master(rebase-i)) $ git rebase --continue                                                                                 [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git rebase --continue
 Successfully rebased and updated refs/heads/master.
 
 ```
@@ -459,7 +460,7 @@ Successfully rebased and updated refs/heads/master.
 - 分割できていることを確認
 
 ```
-kiyotatakeshi@localhost:(master) $ git log --oneline -n 3                                                                                          [/Users/kiyotatakeshi/Desktop/GitHub/git_practice]
+$ git log --oneline -n 3
 2be9285 (HEAD -> master) add third.html
 572a4d3 add first.html,second.html
 c1b0a03 (origin/master) rebase_practice_feature.html を追加
